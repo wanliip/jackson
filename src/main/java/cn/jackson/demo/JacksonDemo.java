@@ -1,6 +1,5 @@
 package cn.jackson.demo;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -10,11 +9,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.codehaus.jackson.JsonParseException;
-import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import cn.jackson.domain.Link;
 import cn.jackson.domain.User;
@@ -88,10 +86,11 @@ public class JacksonDemo {
 	public void json2Obj() throws Exception {
 		User temp = new User();
 //{"id":"01","name":"张三","age":33,"pay":6666.88,"valid":true,"one":"E","birthday":632448000000,"link":{"phone":"13899995555","address":"河南省济源市","qq":"123456"},"map":{"aa":"this is aa","bb":"this is bb","cc":"this is cc"},"list":["普洱","大红袍"],"set":["足球","篮球","乒乓球"]}
-
-		String json="{\"id\":\"01\",\"name\":\"张三\",\"age\":33,\"pay\":6666.88,\"valid\":true,\"one\":\"E\",\"birthday\":632448000000,\"link\":{\"phone\":\"13899995555\",\"address\":\"河南省济源市\",\"qq\":\"123456\"},\"map\":{\"aa\":\"this is aa\",\"bb\":\"this is bb\",\"cc\":\"this is cc\"},\"list\":[\"普洱\",\"大红袍\"],\"set\":[\"足球\",\"篮球\",\"乒乓球\"]}\n";
+//{"id":"01","name":"张三","valid":true,"one":"E","birthday":"1990-01-16","link":{"phone":"13899995555","address":"河南省济源市","qq":"123456"},"map":{"aa":"this is aa","bb":"this is bb","cc":"this is cc"},"list":["普洱","大红袍"],"set":["足球","篮球","乒乓球"],"my_age":33}
+//		String json="{\"id\":\"01\",\"name\":\"张三\",\"age\":33,\"pay\":6666.88,\"valid\":true,\"one\":\"E\",\"birthday\":632448000000,\"link\":{\"phone\":\"13899995555\",\"address\":\"河南省济源市\",\"qq\":\"123456\"},\"map\":{\"aa\":\"this is aa\",\"bb\":\"this is bb\",\"cc\":\"this is cc\"},\"list\":[\"普洱\",\"大红袍\"],\"set\":[\"足球\",\"篮球\",\"乒乓球\"]}\n";
+		String json1 = "{\"id\":\"01\",\"name\":\"张三\",\"valid\":true,\"one\":\"E\",\"birthday\":\"1990-01-16\",\"link\":{\"phone\":\"13899995555\",\"address\":\"河南省济源市\",\"qq\":\"123456\"},\"map\":{\"aa\":\"this is aa\",\"bb\":\"this is bb\",\"cc\":\"this is cc\"},\"list\":[\"普洱\",\"大红袍\"],\"set\":[\"足球\",\"篮球\",\"乒乓球\"],\"my_age\":33}";
 		ObjectMapper mapper = new ObjectMapper();
-		User readValue = mapper.readValue(json, User.class);
+		User readValue = mapper.readValue(json1, User.class);
 		System.out.println(readValue);
 	}
 

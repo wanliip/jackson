@@ -5,16 +5,27 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
 /**
  * Description: 用户，测试模型类
  */
 public class User {
 	private String id; // 标识
 	private String name; // 姓名
+	
+	@JsonProperty("my_age")
 	private int age; // 年龄
+	
+	@JsonIgnore
 	private double pay; // 工资
 	private boolean valid; // 是否有效
 	private char one; // 一个字符
+	
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date birthday; // 生日
 
 	private Link link; // 联系方式，自定义
