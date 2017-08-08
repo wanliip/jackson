@@ -30,4 +30,4 @@ Jackson提供了一系列注解，方便对JSON序列化和反序列化进行控
 1、作用在类上，用来说明有些属性在序列化/反序列化时需要忽略掉，可以将它看做是@JsonIgnore的批量操作，但它的功能比@JsonIgnore要强，比如一个类是代理类，我们无法将将@JsonIgnore标记在属性或方法上，此时便可用@JsonIgnoreProperties标注在类声明上，
 2、它还有一个重要的功能是作用在反序列化时解析字段时过滤一些未知的属性，否则通常情况下解析到我们定义的类不认识的属性便会抛出异常。
 可以注明是想要忽略的属性列表如@JsonIgnoreProperties({"name","age","title"})，
-也可以注明过滤掉未知的属性如@JsonIgnoreProperties(ignoreUnknown=true)
+也可以注明过滤掉未知的属性如@JsonIgnoreProperties(ignoreUnknown=true) 
