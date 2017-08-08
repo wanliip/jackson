@@ -7,12 +7,15 @@ import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 /**
  * Description: 用户，测试模型类
  */
+@JsonIgnoreProperties({ "name", "link"})  //相当于 @JsonIgnore 注解的作用
+//@JsonIgnoreProperties(ignoreUnknown = true)  //当json转对象时候，json中存在obj不存在的字段，会报错，此注解可以忽略obj中不存在的字段
 public class User {
 	private String id; // 标识
 	private String name; // 姓名
@@ -20,7 +23,7 @@ public class User {
 	@JsonProperty("my_age")
 	private int age; // 年龄
 	
-	@JsonIgnore
+//	@JsonIgnore
 	private double pay; // 工资
 	private boolean valid; // 是否有效
 	private char one; // 一个字符
@@ -29,7 +32,6 @@ public class User {
 	private Date birthday; // 生日
 
 	private Link link; // 联系方式，自定义
-
 	private Map map; // 测试用
 	private List list; // 测试用
 	private Set set; // 测试用
